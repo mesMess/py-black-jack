@@ -1,3 +1,5 @@
+import random
+
 '''
 This is a simple game of blackjack I based it
 on a game I downloaded from the app store
@@ -6,8 +8,6 @@ on a game I downloaded from the app store
 '''Missing features:
 1) Players class
 2) Chips totals based on players'''
-
-import random
 
 SUITS = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 RANKS = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven',
@@ -90,7 +90,7 @@ class Hand():
 
 class Chips():
     def __init__(self):
-        self.total = 100  # This can be set to a default value or supplied by user input
+        self.total = 100  # set to default value/supplied by user input
         self.bet = 0
 
     def win_bet(self):
@@ -98,6 +98,7 @@ class Chips():
 
     def lose_bet(self):
         self.total -= self.bet
+
 
 class Player():
     def __init__(self):
