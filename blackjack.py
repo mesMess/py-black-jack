@@ -90,8 +90,8 @@ class Hand():
 
 
 class Chips():
-    def __init__(self):
-        self.total = 100  # set to default value/supplied by user input
+    def __init__(self, current_chips):
+        self.total = current_chips  # set to default value/supplied by user input
         self.bet = 0
 
     def win_bet(self):
