@@ -6,8 +6,9 @@ on a game I downloaded from the app store
 '''
 
 '''Missing features:
-1) Players class
-2) Chips totals based on players'''
+1) Players class implementation and use
+2) Chips totals carried over
+3) Chips totals based on Players'''
 
 SUITS = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 RANKS = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven',
@@ -89,8 +90,8 @@ class Hand():
 
 
 class Chips():
-    def __init__(self):
-        self.total = 100  # set to default value/supplied by user input
+    def __init__(self, current_chips):
+        self.total = current_chips  # set to default value/supplied by user input
         self.bet = 0
 
     def win_bet(self):
@@ -101,6 +102,7 @@ class Chips():
 
 
 class Player():
+    # Needs to be implementated...
     def __init__(self):
         self.hand = player_hand
         self.chips = player_chips
@@ -112,12 +114,14 @@ def take_bet(chips):
     '''
     while True:
         try:
-            chips.bet = int(input('How many chips would you like to bet?'))
+            chips.bet = int(input('How many chips would you like to bet? '))
         except ValueError:
             print('Sorry, a bet must be an integer!')
         else:
             if chips.bet > chips.total:
                 print("Sorry, your bet can't exceed", chips.total)
+            elif chips.bet == 0 or chips.bet < 0: # fix
+                print('Sorry, your bet cannot be less than or equal to zero') # fix
             else:
                 break
 
@@ -177,17 +181,19 @@ def player_wins(player, dealer, chips):
 
 def dealer_busts(player, dealer, chips):
     print("Dealer busts!")
-    chips.lose_bet()
+    #chips.lose_bet()
 
 
 def dealer_wins(player, dealer, chips):
     print("Dealer wins!")
-    chips.win_bet()
+    #chips.win_bet()
 
 
 def push(player, dealer):
     print("Dealer and Player tie! It's a push.")
 
+
+player_chips = None
 
 # Game loop
 while True:
@@ -195,10 +201,11 @@ while True:
     print('Welcome to BlackJack! Get as close to 21 as you can without going over!\n\
         Dealer hits until she reaches 17. Aces count as 1 or 11.')
 
-    # Create & shuffle the deck and deal two cards to each player
+    # Create & shuffle the deck
     deck = Deck()
     deck.shuffle()
 
+    # Deal two cards to each player
     player_hand = Hand()
     player_hand.add_card(deck.deal())
     player_hand.add_card(deck.deal())
@@ -208,7 +215,10 @@ while True:
     dealer_hand.add_card(deck.deal())
 
     # Set up the Player's chips
-    player_chips = Chips()  # remember the default value is 100
+    if player_chips is None: # fix
+        player_chips = Chips(50) # fix
+    else:
+        pass
 
     # Prompt the Player for their bet
     take_bet(player_chips)
