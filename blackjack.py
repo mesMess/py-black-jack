@@ -6,8 +6,9 @@ on a game I downloaded from the app store
 '''
 
 '''Missing features:
-1) Players class
-2) Chips totals based on players'''
+1) Players class implementation and use
+2) Chips totals carried over
+3) Chips totals based on Players'''
 
 SUITS = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 RANKS = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven',
@@ -101,6 +102,7 @@ class Chips():
 
 
 class Player():
+    # Needs to be implementated...
     def __init__(self):
         self.hand = player_hand
         self.chips = player_chips
