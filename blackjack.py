@@ -215,8 +215,11 @@ while True:
     dealer_hand.add_card(deck.deal())
 
     # Set up the Player's chips
-    if player_chips is None: # fix
-        player_chips = Chips(50) # fix
+    if player_chips is None:
+        starting_chips = int(input('How many chips do you want? '))
+        player_chips = Chips(starting_chips)
+    elif player_chips.total == 0:
+        player_chips.total = int(input('It\'s time for more chips: ')) # fix
     else:
         pass
 
