@@ -1,4 +1,7 @@
 import random
+import deck
+import chips
+
 
 '''
 This is a simple game of blackjack I based it
