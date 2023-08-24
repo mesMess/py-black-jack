@@ -272,7 +272,7 @@ while True:
 
     new_game = input("Would you like to play another hand? Enter 'y' or 'n' ")
 
-    if new_game[0].lower() == 'y':  # why do I need the first index
+    if new_game.lower() == 'y':
         playing = True
         continue
     else:
