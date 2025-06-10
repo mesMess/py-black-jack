@@ -1,4 +1,7 @@
 import random
+# import deck
+# import chips
+
 
 '''
 This is a simple game of blackjack I based it
@@ -7,8 +10,9 @@ on a game I downloaded from the app store
 
 '''Missing features:
 1) Players class implementation and use
-2) Chips totals carried over
-3) Chips totals based on Players'''
+2) Chips totals carried over (complete)
+3) Chips totals based on Players (complete)
+4) Show chips totals on screen'''
 
 SUITS = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 RANKS = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven',
@@ -120,8 +124,8 @@ def take_bet(chips):
         else:
             if chips.bet > chips.total:
                 print("Sorry, your bet can't exceed", chips.total)
-            elif chips.bet == 0 or chips.bet < 0: # fix
-                print('Sorry, your bet cannot be less than or equal to zero') # fix
+            elif chips.bet == 0 or chips.bet < 0:  # fix
+                print('Sorry, your bet cannot be less than or equal to zero')  # fix
             else:
                 break
 
@@ -181,12 +185,12 @@ def player_wins(player, dealer, chips):
 
 def dealer_busts(player, dealer, chips):
     print("Dealer busts!")
-    #chips.lose_bet()
+    # chips.lose_bet()
 
 
 def dealer_wins(player, dealer, chips):
     print("Dealer wins!")
-    #chips.win_bet()
+    # chips.win_bet()
 
 
 def push(player, dealer):
@@ -219,7 +223,7 @@ while True:
         starting_chips = int(input('How many chips do you want? '))
         player_chips = Chips(starting_chips)
     elif player_chips.total == 0:
-        player_chips.total = int(input('It\'s time for more chips: ')) # fix
+        player_chips.total = int(input('It\'s time for more chips: '))  # fix
     else:
         pass
 
@@ -229,7 +233,7 @@ while True:
     # Show cards (but keep one dealer card hidden)
     show_some(player_hand, dealer_hand)
 
-    while playing:  # recall this variable from out hit_or_stand function
+    while playing:  # recall this variable from our hit_or_stand function
 
         # Prompt for Player to hit or Stand
         hit_or_stand(deck, player_hand)
@@ -268,7 +272,7 @@ while True:
 
     new_game = input("Would you like to play another hand? Enter 'y' or 'n' ")
 
-    if new_game[0].lower() == 'y':
+    if new_game.lower() == 'y':
         playing = True
         continue
     else:
