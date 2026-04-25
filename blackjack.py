@@ -25,10 +25,6 @@ playing = True
 
 
 class Card():
-    '''
-    This is the card class
-    '''
-
     def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
@@ -43,10 +39,6 @@ class Card():
 
 
 class Deck():
-    '''
-    The deck class
-    '''
-
     def __init__(self):
         self.deck = []  # start with an empty list
         for suit in SUITS:
@@ -63,15 +55,9 @@ class Deck():
         return 'The deck has:' + deck_comp
 
     def shuffle(self):
-        '''
-        Shuffle the deck
-        '''
         random.shuffle(self.deck)
 
     def deal(self):
-        '''
-        Deal the cards
-        '''
         return self.deck.pop()
 
 
@@ -113,14 +99,11 @@ class Player():
 
 
 def take_bet(chips):
-    '''
-    Take_Bet
-    '''
     while True:
         try:
             chips.bet = int(input('How many chips would you like to bet? '))
         except ValueError:
-            print('Sorry, a bet must be an integer!')
+            print('Sorry, a bet must be 1 or greater (ex: 1 - 10000)!')
         else:
             if chips.bet > chips.total:
                 print("Sorry, your bet can't exceed", chips.total)
@@ -131,18 +114,11 @@ def take_bet(chips):
 
 
 def hit(deck, hand):
-    '''
-    Hit me
-    '''
     hand.add_card(deck.deal())
     hand.adjust_for_ace()
 
 
 def hit_or_stand(deck, hand):
-    '''
-    hit or stand allows you to hit to take another card
-    or stand to stop a round
-    '''
     global playing  # to control an upcoming while loop
 
     while True:
